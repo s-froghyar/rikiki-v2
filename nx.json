@@ -33,6 +33,9 @@
     "rikiki-app-e2e": {
       "tags": [],
       "implicitDependencies": ["rikiki-app"]
+    },
+    "rikiki-auth": {
+      "tags": []
     }
   }
 }
