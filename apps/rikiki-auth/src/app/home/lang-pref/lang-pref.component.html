@@ -1,0 +1,15 @@
+<mat-selection-list
+  [multiple]="false"
+  (selectionChange)="selectPreference($event.option.value)"
+>
+  <mat-list-option
+    *ngFor="let lang of options"
+    [value]="lang.id"
+    [selected]="lang.selected"
+  >
+    {{ lang.name }}
+  </mat-list-option>
+</mat-selection-list>
+<button mat-raised-button color="primary" (click)="setPreference()">
+  Apply
+</button>

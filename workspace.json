@@ -22,7 +22,9 @@
               "apps/rikiki-app/src/assets"
             ],
             "styles": ["apps/rikiki-app/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "i18nMissingTranslation": "warning",
+            "localize": ["fr", "en"]
           },
           "configurations": {
             "production": {

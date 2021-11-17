@@ -83,8 +83,10 @@ export class AuthService {
     return this.afAuth.signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-            this.router.navigate(['dashboard']);
-          })
+          // navigate to subdomain along with the token
+          // window.location.href = 'https://stackoverflow.com/questions/66619945/error-auth-configuration-not-an-internal-error-has-occurred';
+          // this.router.navigate('https://stackoverflow.com/questions/66619945/error-auth-configuration-not-an-internal-error-has-occurred');
+        })
         this.setUserData(result.user);
       }).catch((error) => {
         window.alert(error)
