@@ -14,26 +14,25 @@
     justify-content: space-evenly;
     text-align: center;
 
-    .google-signin {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: .25rem;
-        cursor: pointer;
-
-        img { max-height: 30px; }
-        span {
-            font-size: 18px;
-            color: #696969;
-            letter-spacing: 0.1em;
-        }
-    }
-
+    
     .action-btns {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        & > * { width: 40%; }
+        .google-signin {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            cursor: pointer;
+    
+            img { max-height: 30px; }
+            span {
+                font-size: 10px;
+                color: #696969;
+                letter-spacing: 0.1em;
+            }
+        }
+        & > * { width: 32%; }
     }
     mat-hint > button {
         padding: 0;
