@@ -13,7 +13,10 @@
             </button>
         </mat-hint>
     </mat-form-field>
-    <button (click)="authService.googleAuth()"><img src="" alt="log-in-with-google"></button>
+    <button class="google-signin" (click)="authService.googleAuth()">
+        <img src="https://rikiki.s3.eu-west-2.amazonaws.com/assets/google-icon.svg" alt="log-in-with-google">
+        <span>Sign in with Google</span>
+    </button>
     <div class="action-btns">
         <button mat-raised-button color="primary" (click)="signIn()">Log in</button>
         <button mat-stroked-button color="primary" (click)="signUp()">Sign up</button>

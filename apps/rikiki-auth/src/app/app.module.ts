@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -24,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LangPrefComponent } from './home/lang-pref/lang-pref.component';
+import { CookiesComponent } from './cookies/cookies.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { LangPrefComponent } from './home/lang-pref/lang-pref.component';
     LoginComponent,
     SignUpComponent,
     LangPrefComponent,
+    CookiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { LangPrefComponent } from './home/lang-pref/lang-pref.component';
     MatTooltipModule,
     MatBottomSheetModule,
     MatListModule,
+    MatDialogModule,
     RouterModule.forRoot([{ path: '*', redirectTo: '', pathMatch: 'full' }]),
   ],
   providers: [AuthService],

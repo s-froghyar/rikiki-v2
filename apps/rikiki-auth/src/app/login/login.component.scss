@@ -12,8 +12,23 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    // background: red;
     text-align: center;
+
+    .google-signin {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: .25rem;
+        cursor: pointer;
+
+        img { max-height: 30px; }
+        span {
+            font-size: 18px;
+            color: #696969;
+            letter-spacing: 0.1em;
+        }
+    }
+
     .action-btns {
         display: flex;
         justify-content: space-between;
