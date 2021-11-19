@@ -1,6 +1,31 @@
 {
   "version": 1,
   "projects": {
+    "auth": {
+      "projectType": "library",
+      "root": "libs/auth",
+      "sourceRoot": "libs/auth/src",
+      "prefix": "rikiki",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/auth"],
+          "options": {
+            "jestConfig": "libs/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/auth/src/**/*.ts",
+              "libs/auth/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "rikiki-app": {
       "projectType": "application",
       "root": "apps/rikiki-app",
@@ -22,9 +47,7 @@
               "apps/rikiki-app/src/assets"
             ],
             "styles": ["apps/rikiki-app/src/styles.scss"],
-            "scripts": [],
-            "i18nMissingTranslation": "warning",
-            "localize": ["fr", "en"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -143,7 +166,10 @@
               "apps/rikiki-auth/src/favicon.ico",
               "apps/rikiki-auth/src/assets"
             ],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/purple-green.css", "apps/rikiki-auth/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "apps/rikiki-auth/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -212,6 +238,28 @@
           "options": {
             "jestConfig": "apps/rikiki-auth/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "prefix": "rikiki",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui"],
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
           }
         }
       }

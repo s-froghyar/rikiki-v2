@@ -27,6 +27,9 @@
     ]
   },
   "projects": {
+    "auth": {
+      "tags": []
+    },
     "rikiki-app": {
       "tags": []
     },
@@ -35,6 +38,9 @@
       "implicitDependencies": ["rikiki-app"]
     },
     "rikiki-auth": {
+      "tags": []
+    },
+    "ui": {
       "tags": []
     }
   }

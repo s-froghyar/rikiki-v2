@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "@rikiki/auth": ["libs/auth/src/index.ts"],
+      "@rikiki/ui": ["libs/ui/src/index.ts"]
+    },
     "esModuleInterop": true
   },
   "exclude": ["node_modules", "tmp"]

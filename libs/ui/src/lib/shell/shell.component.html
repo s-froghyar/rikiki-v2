@@ -1,0 +1,15 @@
+<div class="masthead">
+  <h1 class="title">Rikiki Arena</h1>
+  <div class="nav">
+    <button class="tab" [class.active]="currentTab === 'game'" (click)="setTab('game')">
+      The Game
+    </button>
+    <button class="tab" [class.active]="currentTab === 0" (click)="setTab(0)">
+        Public Lobbies
+    </button>
+    <button class="tab" [class.active]="currentTab === 1" (click)="setTab(1)">
+        Private Lobbies
+    </button>
+  </div>
+</div>
+<ng-content></ng-content>
