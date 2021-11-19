@@ -4,6 +4,7 @@ import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,  
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private cookieService: CookieService
   ) {    
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -112,6 +114,7 @@ export class AuthService {
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     }
+    // this.cookieService.set('rikiki-auth', userData,);
     return userRef.set(userData, {
       merge: true
     })

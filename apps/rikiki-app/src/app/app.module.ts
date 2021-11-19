@@ -7,17 +7,17 @@ import { AppComponent } from './app.component';
 // import { provideAuth, getAuth } from '@angular/fire/auth';
 // import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { UiModule } from '@rikiki/ui';
+import { AuthModule } from '@rikiki/auth';
+
 import { AppRoutingModule } from './app-routing.module';
-
-
-
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     UiModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),

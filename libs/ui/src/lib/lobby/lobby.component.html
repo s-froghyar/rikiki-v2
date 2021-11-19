@@ -1,1 +1,11 @@
-<p>lobby works!</p>
+<div class="content">
+    <h1>{{ lobbyType }} Lobbies (4/5)</h1>
+    <div class="explorer">
+        <div class="lobby-list">
+            <rikiki-lobby-list-item *ngFor="let lobby of lobbies"
+                [lobby]="lobby"
+            ></rikiki-lobby-list-item>
+        </div>
+        <div class="lobby-info"></div>
+    </div>
+</div>

@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LangPrefComponent } from './home/lang-pref/lang-pref.component';
 import { CookiesComponent } from './cookies/cookies.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,10 @@ import { CookiesComponent } from './cookies/cookies.component';
     MatDialogModule,
     RouterModule.forRoot([{ path: '*', redirectTo: '', pathMatch: 'full' }]),
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    CookieService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

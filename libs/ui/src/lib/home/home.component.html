@@ -1,16 +1,10 @@
 <div class="content">
     <rikiki-shell class="shell">
-        <div [ngSwitch]="currentTab">
-            <div *ngSwitchCase="'game'">
-                <rikiki-game-info></rikiki-game-info>
-            </div>
-            <div *ngSwitchCase="0">
-                <rikiki-lobby type="0"></rikiki-lobby>
-            </div>
-            <div *ngSwitchCase="1">
-                <rikiki-lobby type="1"></rikiki-lobby>
-            </div>
+        <ng-container [ngSwitch]="currentTab">
+            <rikiki-game-info *ngSwitchCase="'game'"></rikiki-game-info>
+            <rikiki-lobby *ngSwitchCase="0" [lobbyType]="'Public'"></rikiki-lobby>
+            <rikiki-lobby *ngSwitchCase="1" [lobbyType]="'Private'"></rikiki-lobby>
             <div *ngSwitchDefault>output2</div>
-        </div>
+        </ng-container>
     </rikiki-shell>
 </div>
