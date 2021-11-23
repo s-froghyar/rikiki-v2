@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "rikiki-3a8a4"
+  },
+  "targets": {
+    "rikiki-3a8a4": {
+      "hosting": {
+        "auth": [
+          "rikiki-3a8a4"
+        ],
+        "arena": [
+          "r-arena"
+        ]
+      }
+    }
   }
 }
