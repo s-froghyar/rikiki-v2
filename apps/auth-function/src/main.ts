@@ -11,6 +11,7 @@ export const createNestServer = async (expressInstance) => {
     AppModule,
     new ExpressAdapter(expressInstance),
   );
+  app.enableCors();
 
   return app.init();
 };
@@ -20,4 +21,4 @@ createNestServer(server)
     .catch(err => console.error('Nest broken', err));
 
 // Connect express server to Firebase Functions
-export const authFun = functions.region('europe-west1').https.onRequest(server);
+export const authFunc = functions.region('europe-west1').https.onRequest(server);

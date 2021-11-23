@@ -4,21 +4,22 @@ import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
-import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  userData: any; // Save logged in user data
+  userData!: firebase.User | null;
 
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
-    public router: Router,  
-    public ngZone: NgZone, // NgZone service to remove outside scope warning
-    private cookieService: CookieService
+    public router: Router,
+    public http: HttpClient, 
+    public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {    
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -85,11 +86,13 @@ export class AuthService {
     return this.afAuth.signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          // navigate to subdomain along with the token
+          // navigate to subdomain 
           // window.location.href = 'https://stackoverflow.com/questions/66619945/error-auth-configuration-not-an-internal-error-has-occurred';
           // this.router.navigate('https://stackoverflow.com/questions/66619945/error-auth-configuration-not-an-internal-error-has-occurred');
         })
         this.setUserData(result.user);
+        this.http.post(`${environment.apiUrl}/login`, { token: this.userData?.getIdToken() })
+          .subscribe(resp => console.log(resp));
       }).catch((error) => {
         window.alert(error)
       })
@@ -114,10 +117,9 @@ export class AuthService {
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
     }
-    // this.cookieService.set('rikiki-auth', userData,);
     return userRef.set(userData, {
       merge: true
-    })
+    });
   }
 
   // Sign out 

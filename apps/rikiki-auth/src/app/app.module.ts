@@ -23,17 +23,15 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { LangPrefComponent } from './home/lang-pref/lang-pref.component';
 import { CookiesComponent } from './cookies/cookies.component';
-import { CookieService } from 'ngx-cookie-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    SignUpComponent,
     LangPrefComponent,
     CookiesComponent,
   ],
@@ -54,12 +52,10 @@ import { CookieService } from 'ngx-cookie-service';
     MatBottomSheetModule,
     MatListModule,
     MatDialogModule,
+    HttpClientModule,
     RouterModule.forRoot([{ path: '*', redirectTo: '', pathMatch: 'full' }]),
   ],
-  providers: [
-    AuthService,
-    CookieService
-  ],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
