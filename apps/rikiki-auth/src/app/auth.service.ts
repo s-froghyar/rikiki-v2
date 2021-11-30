@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class AuthService {
   userData!: firebase.User | null;
-
+  token!: string;
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -24,6 +24,8 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
+        user.getIdToken().then(idToken => this.token = idToken);
+
         localStorage.setItem('user', JSON.stringify(this.userData));
         // JSON.parse(localStorage.getItem('user') ?? '');
       } else {
@@ -91,7 +93,14 @@ export class AuthService {
           // this.router.navigate('https://stackoverflow.com/questions/66619945/error-auth-configuration-not-an-internal-error-has-occurred');
         })
         this.setUserData(result.user);
-        this.http.post(`${environment.apiUrl}/login`, { token: this.userData?.getIdToken() })
+        this.http.post(
+          `${environment.apiUrl}/login`,
+          { token: this.token },
+          { 
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            }
+          })
           .subscribe(resp => console.log(resp));
       }).catch((error) => {
         window.alert(error)

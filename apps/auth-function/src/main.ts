@@ -9,9 +9,13 @@ const server = express();
 export const createNestServer = async (expressInstance) => {
   const app = await NestFactory.create(
     AppModule,
-    new ExpressAdapter(expressInstance),
+    new ExpressAdapter(expressInstance)
   );
-  app.enableCors();
+  app.enableCors({
+    origin: '*',// /rikiki\.co$/,
+    methods: ['GET', 'POST'],
+
+  });
 
   return app.init();
 };

@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@rikiki/auth": ["libs/auth/src/index.ts"],
-      "@rikiki/ui": ["libs/ui/src/index.ts"]
+      "@rikiki/ui": ["libs/ui/src/index.ts"],
+      "@rikiki/utils": ["libs/utils/src/index.ts"]
     },
     "esModuleInterop": true
   },

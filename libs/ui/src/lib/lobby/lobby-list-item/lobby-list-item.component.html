@@ -1,1 +1,35 @@
-<p>lobby-list-item works!</p>
+<div class="profile-img">
+    <img src="" alt="">
+</div>
+<div class="lobby-name">{{ lobby.displayName }}</div>
+<div class="player-count">
+    <fa-icon [icon]="faUsers"></fa-icon>
+    {{ lobby.players.length }}/5
+</div>
+<div class="active-rules">
+    <div class="asc" [ngSwitch]="lobby.rules.isAscending">
+        <span class="ascend" *ngSwitchCase="true">
+            <fa-icon [icon]="faAsc"></fa-icon>
+        </span>
+        <span class="descend" *ngSwitchCase="false">
+            <fa-icon [icon]="faDesc"></fa-icon>
+        </span>
+    </div>
+    <div class="obl">
+        <fa-icon [icon]="faHit"></fa-icon>
+    </div>
+    <div class="dea">
+        <fa-icon [icon]="faRedo"></fa-icon>
+    </div>
+    <div class="max">
+        <fa-icon [icon]="faMax"></fa-icon>
+    </div>
+</div>
+<div class="join">
+    <button>Join!</button>
+</div>
+<div class="show-details">
+    <fa-icon [icon]="faShow"></fa-icon>
+</div>
+<div class="bg-1"></div>
+<div class="bg-2"></div>

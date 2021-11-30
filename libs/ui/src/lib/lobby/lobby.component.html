@@ -1,11 +1,14 @@
 <div class="content">
     <h1>{{ lobbyType }} Lobbies (4/5)</h1>
     <div class="explorer">
-        <div class="lobby-list">
+        <div class="lobby-list" [class.collapse]="selectedLobby">
             <rikiki-lobby-list-item *ngFor="let lobby of lobbies"
+                (click)="selectLobby(lobby.id)"
                 [lobby]="lobby"
             ></rikiki-lobby-list-item>
         </div>
-        <div class="lobby-info"></div>
+        <div class="lobby-info" [class.selected]="selectedLobby" [class.active]="selectedLobby">
+            <rikiki-lobby-info [lobby]="selectedLobby"></rikiki-lobby-info>
+        </div>
     </div>
 </div>

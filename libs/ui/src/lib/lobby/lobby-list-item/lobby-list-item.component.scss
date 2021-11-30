@@ -1,3 +1,70 @@
 :host {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+
+  padding: 0.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background: #E0E0E0;
+  opacity: 0.7;
+  border-radius: 0.5rem;
+  transition: all 0.5s ease-in-out;
+  // background: linear-gradient(339deg,afada9 A9ABAF rgba(175,173,169,1) 25%, rgba(14,0,255,0) 100%);
+  // background: linear-gradient(339deg, #A9ABAF 5%, rgba(14, 0, 255, 0) 78%);
+  // #E0E0E0
+  * {
+    color: black;
+  }
+  &:hover {
+    transform: scale(1.05);
+    transform-origin: left;
+    padding-right: 1.5rem;
+    cursor: pointer;
+    opacity: 0.9;
+    .show-details {
+      opacity: 1;
+    }
+  }
+}
+
+.bg-1, .bg-2 {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255,255,255,1) 10%, rgba(0,0,0,0) 100%); 
+  width: 75%;
+  height: 150%;
+  z-index: -1;
+}
+
+.bg-1 { top: -50%; left: -19%; }
+.bg-2 { bottom: -50%; right: -25%; }
+
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: red;
+}
+.lobby-name {
+  padding: .5rem;
+  letter-spacing: 0.1em;
+}
+.active-rules {
+  display: flex;
+}
+.show-details {
+  position: absolute;
+  right: 0;
+  padding: 0.25rem;
+  z-index: 0;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+.join {
+  position: relative;
+  z-index: 1;
+}
+.player-count {
+  // padding: 0.5rem;
 }

@@ -1,35 +1,43 @@
-import { Body, Controller, Get, Post, Req } from '@nestjs/common';
-import * as firebase from 'firebase-admin';
-import { firebase_params } from '../environments/serviceAccount';
-
+import { Body, Controller, Get, Post, Redirect, Res, UnauthorizedException } from '@nestjs/common';
+import { CookieOptions, Response } from 'express';
 import { AppService } from './app.service';
 
 @Controller('auth')
 export class AppController {
-
-  defaultApp: firebase.app.App;
-
-  constructor(private readonly appService: AppService) {
-    this.defaultApp = firebase.initializeApp({
-      credential: firebase.credential.cert(firebase_params)
-    });    
-  }
+  constructor(private readonly appService: AppService) {}
 
   @Post('login')
-  setLoginCookie(@Body() body: {token: string}) {
+  // @Redirect('https://arena.rikiki.co', 302)
+  setLoginCookie(@Body() body: { token: string }, @Res() response: Response) {
     console.log(`verifying token: ${body.token}`);
-    
-    this.defaultApp
-      .auth()
-      .verifyIdToken(body.token, true)
-      .then(decodedToken => {
-        console.log(decodedToken);
+    console.log(response);
+    try {
+      this.appService.verifyToken(body.token);
+    } catch (e) {
+      if (e instanceof UnauthorizedException) {
+        console.log('ID token could not be authorized');
+      }
+      response.status(401).send('UNAUTHORIZED REQUEST!');
+      return;
+    }
+
+    const expiresIn = 1000 * 60 * 60; // an hour
+    this.appService
+      .storeInCache(body.token, expiresIn)
+      .then((sessionCookie) => {
+        const options: CookieOptions = {
+          domain: '.rikiki.co',
+          maxAge: expiresIn,
+          httpOnly: true,
+          secure: true,
+          sameSite: 'strict',
+        };
+        response.status(201).cookie('__session', sessionCookie, options);
+        response.end(JSON.stringify({ status: 'success' }));
       })
       .catch(err => {
-        console.log(err);
+        response.status(401).send('UNAUTHORIZED REQUEST!');
       });
-
-    return this.appService.getData();
   }
 
   @Get('status')

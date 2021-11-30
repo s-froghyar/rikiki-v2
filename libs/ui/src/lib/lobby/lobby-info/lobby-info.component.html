@@ -1,1 +1,42 @@
-<p>lobby-info works!</p>
+<div *ngIf="lobby" class="lobby-content">
+    <div class="lobby-icon">
+        <img src="" alt="">
+    </div>
+    <div class="lobby-name">{{ lobby.displayName }}</div>
+    <div class="lobby-players">
+        <span>Players (4/5)</span>
+        <div class="player" *ngFor="let player of lobby.players">
+            <span>{{ player.name }}</span>
+        </div>
+    </div>
+    <div class="lobby-rules">
+        <span>Rules</span>
+        <div class="rules">
+            <div class="asc active">
+                <span class="icon" [ngSwitch]="lobby.rules.isAscending">
+                    <fa-icon [icon]="faAsc"  *ngSwitchCase="true"></fa-icon>
+                    <fa-icon [icon]="faDesc"  *ngSwitchCase="false"></fa-icon>
+                </span>
+            </div>
+            <div class="obl" [class.active]="lobby.rules.utesKenyszer">
+                <fa-icon [icon]="faHit"></fa-icon>
+            </div>
+            <div class="dea" [class.active]="lobby.rules.dealerRebet">
+                <fa-icon [icon]="faRedo"></fa-icon>
+            </div>
+            <div class="max active">
+                {{ lobby.rules.maxCards }}
+                <fa-icon [icon]="faMax"></fa-icon>
+            </div>
+        </div>
+    </div>
+    <div class="lobby-actions">
+        <div class="btn-1">Join</div>
+        <!-- <div class="btn-2"></div>
+        <div class="btn-3"></div> -->
+    </div>
+</div>
+<div *ngIf="!lobby" class="no-content">
+    <fa-icon [icon]="faInfo"></fa-icon>
+    Select a lobby to see more info about it!
+</div>

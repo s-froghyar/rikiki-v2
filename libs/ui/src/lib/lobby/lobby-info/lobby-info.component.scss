@@ -1,3 +1,104 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: black;
+
+  max-width: 350px;
+  height: 100%;
+  // margin-left: .5rem;
+  // margin-right: .5rem;
+  padding: 1.5rem;
+
+  background: #E0E0E0;
+  border-radius: 0.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+  .no-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 160px;
+  }
+  .lobby-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    .lobby-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: red;;
+    }
+    .lobby-name {
+      font-size: 25px;
+    }
+    .lobby-players {
+      width: 100%;
+      & > span {
+        display: block;
+        width: 70%;
+        padding: 0.3rem;
+        font-size: 20px;
+        // border-bottom: 1px solid gray;
+      }
+      .player {
+        width: calc(100% - 2.4rem);
+        padding: 0.2rem;
+        &:hover {
+          background: lightgrey;
+        }
+      }
+    }
+    .lobby-rules {
+      width: 100%;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      .rules {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        & > * {
+          opacity: 0.4;
+          font-size: 27px;
+          transition: transform 0.5s ease;
+          &:hover {
+            transform: scale(1.4);
+          }
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .lobby-actions {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      & > div {
+        // flex-grow: 1;
+        min-width: 30%;
+        padding: .4rem;
+        font-size: 17px;
+        outline: 1px solid black;
+        cursor: pointer;
+        text-align: center;
+        opacity: 0.9;
+        transition: all 0.5s ease;
+
+        &:hover {
+          background:rgba(255, 255, 255, 0.4);
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+    }
+
+  }
 }

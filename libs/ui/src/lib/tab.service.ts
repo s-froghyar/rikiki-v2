@@ -6,7 +6,7 @@ import { TabType } from './core/interfaces/tabs.interface';
   providedIn: 'root'
 })
 export class TabService {
-  currentTabSource$: BehaviorSubject<TabType> = new BehaviorSubject<TabType>('game');
+  currentTabSource$: BehaviorSubject<TabType> = new BehaviorSubject<TabType>(0);
   constructor() { }
 
   getCurrentTab(): Observable<TabType> {

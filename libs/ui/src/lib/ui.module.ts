@@ -6,10 +6,21 @@ import { GameInfoComponent } from './game-info/game-info.component';
 import { LobbyComponent } from './lobby/lobby.component';
 import { LobbyListItemComponent } from './lobby/lobby-list-item/lobby-list-item.component';
 import { LobbyInfoComponent } from './lobby/lobby-info/lobby-info.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [ShellComponent, HomeComponent, GameInfoComponent, LobbyComponent, LobbyListItemComponent, LobbyInfoComponent],
+  imports: [
+    CommonModule,
+    FontAwesomeModule
+  ],
+  declarations: [
+    ShellComponent,
+    HomeComponent,
+    GameInfoComponent,
+    LobbyComponent,
+    LobbyListItemComponent,
+    LobbyInfoComponent,
+  ],
   exports: [ShellComponent, HomeComponent],
 })
 export class UiModule {}
