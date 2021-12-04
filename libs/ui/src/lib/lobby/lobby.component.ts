@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Lobby, mockLobbies } from '@rikiki/utils';
+import { CreateModalComponent } from './create-modal/create-modal.component';
 
 
 @Component({
@@ -13,7 +15,7 @@ export class LobbyComponent implements OnInit {
 
   lobbies: Lobby[] = mockLobbies;
   selectedLobby!: Lobby;// = mockLobbies[0];
-  constructor() { }
+  constructor(private readonly modal: MatDialog) { }
 
   ngOnInit(): void {
     this.lobbies
@@ -23,6 +25,18 @@ export class LobbyComponent implements OnInit {
     this.lobbies.forEach(l => l.selected = false);
     this.lobbies[ind].selected = true;
     this.selectedLobby = Object.assign({}, this.lobbies[ind]);
+  }
+
+  openCreateModal(): void {
+    const dialogRef = this.modal.open(CreateModalComponent, {
+      width: '250px',
+      height: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+
   }
 
 }

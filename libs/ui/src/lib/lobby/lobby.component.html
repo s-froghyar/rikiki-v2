@@ -4,8 +4,12 @@
         <div class="lobby-list" [class.collapse]="selectedLobby">
             <rikiki-lobby-list-item *ngFor="let lobby of lobbies"
                 (click)="selectLobby(lobby.id)"
+                [class.active]="lobby.selected"
                 [lobby]="lobby"
             ></rikiki-lobby-list-item>
+            <div class="actions">
+                <button (click)="openCreateModal()">Create {{ lobbyType }} Lobby</button>
+            </div>
         </div>
         <div class="lobby-info" [class.selected]="selectedLobby" [class.active]="selectedLobby">
             <rikiki-lobby-info [lobby]="selectedLobby"></rikiki-lobby-info>

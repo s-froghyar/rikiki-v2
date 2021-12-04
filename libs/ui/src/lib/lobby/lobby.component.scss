@@ -38,9 +38,27 @@
             &.collapse {
                 width: 50%;
             }
+
+            .actions {
+                button {
+                    background-color: transparent;
+                    border: none;
+                    color: #c3c3c3;
+                    font-size: 18px;
+                    cursor: pointer;
+                    padding: 1rem .5rem;
+                    border-radius: 0.5rem;
+                    transition: background 0.5s ease;
+                    &:hover, &:focus {
+                        // text-decoration: underline;
+                        background: rgba($color: #000000, $alpha: 0.3)
+                    }
+                }
+            }
+
             & > * {
                 width: 100%;
-                margin-bottom: 0.2rem
+                margin-bottom: 0.3rem;
             }
 
         }
