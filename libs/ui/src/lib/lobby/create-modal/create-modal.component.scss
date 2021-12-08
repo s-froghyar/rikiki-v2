@@ -1,6 +1,72 @@
+:host {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
 .modal-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+    &.hidden {
+        transform: translateX(-100%);
+    }
+    .lobby-icon {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        & > * {
+            transition: all 0.5s ease;
+            opacity: 0;
+            color: #c3c3c3;
+        }
+        &:hover {
+            & > * {
+                opacity: 0.7;
+                transform: scale(1.5);
+                transform-origin: center;
+            }
+        }
+    }
+    .lobby-name {
+        & > div {
+            height: fit-content;
+            transition: background-color 0.5s ease;
+            &:hover {
+                background-color: #c3c3c3;
+            }
+        }
+    }
+}
+.icon-selector {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: -100%;
+    transition: right 0.5s ease;
+
+    &.show {
+        right: 0;
+    }
+
+    .title {
+        width: 100%;
+        position: relative;
+        text-align: center;
+        .return {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+    // transform: translateX(100%);
+    // &.show {
+    //     transform: translateX(0)
+    // }
 }

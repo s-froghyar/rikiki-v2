@@ -1,8 +1,8 @@
 import { Lobby } from "../interfaces/lobby";
-import { Rules } from "../interfaces/rules";
+import { RikikiRules } from "../interfaces/rules";
 import { mockLobbyPlayers } from "./players.mock";
 
-export const baseRules: Rules = {
+export const baseRules: RikikiRules = {
     isAscending: true,
     dealerRebet: false,
     utesKenyszer: true,

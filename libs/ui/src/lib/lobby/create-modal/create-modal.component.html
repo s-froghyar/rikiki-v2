@@ -1,14 +1,35 @@
-<mat-form-field class="modal-content" appearance="fill">
-    <div class="lobby-icon"></div>
-    <div class="lobby-name">
-        <mat-label>Clearable input</mat-label>
-        <input matInput type="text" >
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-            <mat-icon>close</mat-icon>
-        </button>
-          
+<div class="modal-content" [class.hidden]="selectingIcon" [formGroup]="fg">
+    <div class="lobby-icon w-28 h-28 rounded-xl bg-black" (click)="selectingIcon = true">
+        <fa-icon [icon]="faEdit"></fa-icon>
     </div>
-    <section class="lobby-rules"></section>
-    <section class="game-rules"></section>
+    <div class="lobby-name w-full flex items-center">
+        <mat-form-field class="w-full" appearance="standard">
+            <mat-label>Lobby name</mat-label>
+            <input formControlName="name" matInput type="text">
+            <button matSuffix mat-icon-button>
+                <fa-icon [icon]="faClose"></fa-icon>
+            </button>
+        </mat-form-field>
+        <div class="ml-3 p-2 border rounded cursor-pointer">
+            <fa-icon [icon]="faCopy"></fa-icon>
+        </div>
+    </div>
+    <rikiki-rules-section
+        name="Lobby rules"
+    ></rikiki-rules-section>
+    <rikiki-rules-section
+        name="Game rules"
+    ></rikiki-rules-section>
     <div class="action-btns"></div>
-</mat-form-field>
+    <div class="actions w-full flex justify-end">
+        <button mat-button mat-dialog-close color="primary">Cancel</button>
+        <button mat-raised-button color="primary">Create</button>
+    </div>
+</div>
+<div class="icon-selector flex flex-col" [class.show]="selectingIcon">
+    <div class="title mb-2">
+        <div class="return cursor-pointer" (click)="selectingIcon = false">< return</div>
+        <h2>Select a lobby icon!</h2>
+    </div>
+    <div class="icons">lmaolmao</div>
+</div>

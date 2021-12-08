@@ -1,0 +1,13 @@
+<div class="title">
+    <span>{{ rule.displayName }}</span>
+    <fa-icon [icon]="faInfo" *ngIf="rule.info"
+        [matTooltip]="rule.info" matTooltipPosition="above"></fa-icon>
+</div>
+<div class="val" [ngSwitch]="rule.type">
+    <div *ngSwitchCase="'toggle'">
+        <mat-slide-toggle color="primary" [checked]="rule.value"></mat-slide-toggle>
+    </div>
+    <div *ngSwitchCase="'num'">
+        
+    </div>
+</div>

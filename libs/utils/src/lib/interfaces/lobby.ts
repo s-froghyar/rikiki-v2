@@ -1,10 +1,10 @@
 import { Player } from "./player";
-import { Rules } from "./rules";
+import { RikikiRules } from "./rules";
 
 export interface Lobby {
     id: number;
     displayName?: string;
     players: Player[];
-    rules: Rules;
+    rules: RikikiRules;
     selected?: boolean;
 }

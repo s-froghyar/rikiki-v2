@@ -29,8 +29,10 @@ export class LobbyComponent implements OnInit {
 
   openCreateModal(): void {
     const dialogRef = this.modal.open(CreateModalComponent, {
-      width: '250px',
-      height: '300px'
+      width: '500px',
+      panelClass: 'overflow-hidden',
+      disableClose: true
+      // height: '600px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
