@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from "./shared/services/user.interface";
+import { User } from "@rikiki/utils";
 import firebase from 'firebase/compat/app';
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
@@ -15,8 +15,8 @@ export class AuthService {
   userData!: firebase.User | null;
   token!: string;
   constructor(
-    public afs: AngularFirestore,   // Inject Firestore service
-    public afAuth: AngularFireAuth, // Inject Firebase auth service
+    public afs: AngularFirestore,
+    public afAuth: AngularFireAuth,
     public router: Router,
     public http: HttpClient, 
     public ngZone: NgZone // NgZone service to remove outside scope warning
@@ -32,7 +32,7 @@ export class AuthService {
         localStorage.setItem('user', '');
         // JSON.parse(localStorage.getItem('user') ?? '');
       }
-    })
+    });
   }
 
   // Sign in with email/password
@@ -131,7 +131,7 @@ export class AuthService {
     });
   }
 
-  // Sign out 
+  // Sign out
   signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');

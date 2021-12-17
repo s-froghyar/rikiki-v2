@@ -3,8 +3,9 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
+  ChangeDetectorRef,
 } from '@angular/core';
-import { Lobby } from '@rikiki/utils';
+import { DisplayedLobby, Lobby } from '@rikiki/utils';
 import {
   faSortUp,
   faSortDown,
@@ -22,7 +23,16 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LobbyListItemComponent implements OnInit {
-  @Input() lobby!: Lobby;
+  @Input() set lobby(l: DisplayedLobby) {
+    this._lobby = Object.assign({}, l);
+    this.cd.detectChanges();
+  }
+  get lobby(): DisplayedLobby {
+    return this._lobby;
+  }
+
+  private _lobby!: DisplayedLobby;
+
 
   isLoading = true;
   faAsc = faSortUp;
@@ -32,7 +42,7 @@ export class LobbyListItemComponent implements OnInit {
   faMax = faLayerGroup;
   faUsers = faUsers;
   faShow = faAngleDoubleRight;
-  constructor() {}
+  constructor(private readonly cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.initLobby();
@@ -40,8 +50,10 @@ export class LobbyListItemComponent implements OnInit {
   }
 
   initLobby(): void {
-    const adminPlayerName =
-      this.lobby.players.find((player) => player.isAdmin)?.name ?? 'Admin';
-    this.lobby.displayName = `${adminPlayerName} et al.`;
+    if (!this.lobby.name) {
+      const adminPlayerName =
+        this.lobby.players.find((player) => player.id === this.lobby.adminId)?.name ?? 'Admin';
+      this.lobby.name = `${adminPlayerName} et al.`;
+    }
   }
 }

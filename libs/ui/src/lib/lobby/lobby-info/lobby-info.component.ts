@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
 import { faGavel, faInfoCircle, faLayerGroup, faRedoAlt, faSortDown, faSortUp, faUsers } from '@fortawesome/free-solid-svg-icons';
-import { Lobby } from '@rikiki/utils';
+import { DisplayedLobby, Lobby } from '@rikiki/utils';
 
 @Component({
   selector: 'rikiki-lobby-info',
@@ -9,7 +9,20 @@ import { Lobby } from '@rikiki/utils';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LobbyInfoComponent implements OnInit {
-  @Input() lobby!: Lobby;
+  @Input() set lobby(l: DisplayedLobby) {
+    if (l) {
+      console.log('updating info card');
+      
+      this._lobby = Object.assign({}, l);      
+      this.isLoading = false;
+      this.cd.detectChanges();
+    }
+  }
+  get lobby(): DisplayedLobby {
+    return this._lobby;
+  }
+
+  private _lobby!: DisplayedLobby;
 
   faAsc = faSortUp;
   faDesc = faSortDown;
@@ -18,7 +31,8 @@ export class LobbyInfoComponent implements OnInit {
   faMax = faLayerGroup;
   faUsers = faUsers;
   faInfo = faInfoCircle;
-  constructor() { }
+  isLoading = true;
+  constructor(private readonly cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }

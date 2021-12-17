@@ -1,8 +1,8 @@
-<div *ngIf="lobby" class="lobby-content">
+<div *ngIf="!isLoading" class="lobby-content">
     <div class="lobby-icon">
         <img src="" alt="">
     </div>
-    <div class="lobby-name">{{ lobby.displayName }}</div>
+    <div class="lobby-name">{{ lobby.name }}</div>
     <div class="lobby-players">
         <span>Players (4/5)</span>
         <div class="player" *ngFor="let player of lobby.players">
@@ -36,7 +36,7 @@
         <div class="btn-3"></div> -->
     </div>
 </div>
-<div *ngIf="!lobby" class="no-content">
+<div *ngIf="isLoading" class="no-content">
     <fa-icon [icon]="faInfo"></fa-icon>
     Select a lobby to see more info about it!
 </div>
