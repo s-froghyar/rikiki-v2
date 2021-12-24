@@ -10,6 +10,7 @@ export interface RikikiRules {
 export type RuleType = 'toggle' | 'num';
 
 export interface Rule {
+    id: string;
     type: RuleType;
     displayName: string;
     value: any;

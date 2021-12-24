@@ -1,0 +1,9 @@
+<span *ngIf="!isLoading">{{ selectedItem?.displayValue ?? 'lmao' }}</span>
+<ul #container>
+    <li *ngFor="let item of items; trackBy : identify" #el
+        [class.selected]="item.selected"
+        (click)="selectItem(item)"
+    >
+        {{ item.displayValue }}
+    </li>
+</ul>

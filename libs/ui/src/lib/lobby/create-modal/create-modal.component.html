@@ -1,5 +1,6 @@
 <div class="modal-content" [class.hidden]="selectingIcon" [formGroup]="fg">
     <div class="lobby-icon w-28 h-28 rounded-xl bg-black" (click)="selectingIcon = true">
+        <img [src]="selectedIconUrl" alt="selected icon">
         <fa-icon [icon]="faEdit"></fa-icon>
     </div>
     <div class="lobby-name w-full flex items-center">
@@ -14,22 +15,57 @@
             <fa-icon [icon]="faCopy"></fa-icon>
         </div>
     </div>
-    <rikiki-rules-section
-        name="Lobby rules"
-    ></rikiki-rules-section>
-    <rikiki-rules-section
-        name="Game rules"
-    ></rikiki-rules-section>
-    <div class="action-btns"></div>
+    <div class="rules-section" formArrayName="lobbyRules">
+        <div class="header flex justify-between" (click)="showLobbyRules = !showLobbyRules">
+            <span>Lobby Rules</span>
+            <div class="toggle">
+                <fa-icon *ngIf="showLobbyRules" [icon]="faUp"></fa-icon>
+                <fa-icon *ngIf="!showLobbyRules" [icon]="faDown"></fa-icon>
+            </div>
+        </div>
+        <div class="content" *ngIf="showLobbyRules" [@grow]>
+            <rikiki-rule *ngFor="let rule of lobbyRules.controls; let i = index"
+                [rule]="rule.value"
+                (ruleChanged)="onRuleChange(i, 0, $event)"
+                ></rikiki-rule>
+        </div>
+    </div>
+    <div class="rules-section" formArrayName="gameRules">
+        <div class="header flex justify-between" (click)="showGameRules = !showGameRules">
+            <span>Game Rules</span>
+            <div class="toggle">
+                <fa-icon *ngIf="showGameRules" [icon]="faUp"></fa-icon>
+                <fa-icon *ngIf="!showGameRules" [icon]="faDown"></fa-icon>
+            </div>
+        </div>
+        <div class="content" *ngIf="showGameRules" [@grow]>
+            <rikiki-rule *ngFor="let ruleForm of gameRules.controls; let i = index; trackBy: identify"
+                [rule]="ruleForm.value"
+                (ruleChanged)="onRuleChange(i, 1, $event)"
+            ></rikiki-rule>
+        </div>
+    </div>
+    <hr class="w-full my-1" />
     <div class="actions w-full flex justify-end">
         <button mat-button mat-dialog-close color="primary">Cancel</button>
-        <button mat-raised-button color="primary">Create</button>
+        <button mat-raised-button color="primary" (click)="showItPlz()">Create</button>
     </div>
 </div>
+
 <div class="icon-selector flex flex-col" [class.show]="selectingIcon">
     <div class="title mb-2">
         <div class="return cursor-pointer" (click)="selectingIcon = false">< return</div>
         <h2>Select a lobby icon!</h2>
     </div>
-    <div class="icons">lmaolmao</div>
+    <div class="icons" [formGroup]="fg">
+        <ng-container *ngFor="let icon of lobbyIcons; let i = index">
+            <div class="icon" >
+                <input type="radio" name="iconUrl" [value]="icon.url" formControlName="iconUrl"
+                    [id]="i + '-icon'" class="hidden" />
+                <label [for]="i + '-icon'">
+                    <img [src]="icon.url" [alt]="'icon ' + i" class="rounded-xl overflow-hidden">
+                </label>
+            </div>
+        </ng-container>
+    </div>
 </div>

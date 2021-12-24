@@ -24,11 +24,11 @@ import { LobbyComponent } from './lobby/lobby.component';
 import { LobbyListItemComponent } from './lobby/lobby-list-item/lobby-list-item.component';
 import { LobbyInfoComponent } from './lobby/lobby-info/lobby-info.component';
 import { CreateModalComponent } from './lobby/create-modal/create-modal.component';
-import { RulesSectionComponent } from './rules-section/rules-section.component';
-import { RuleComponent } from './rules-section/rule/rule.component';
 import { LobbyService } from '@rikiki/utils';
 
 import { environment } from './environments/environments';
+import { SelectorComponent } from './selector/selector.component';
+import { RuleComponent } from './rule/rule.component';
 
 @NgModule({
   imports: [
@@ -56,8 +56,8 @@ import { environment } from './environments/environments';
     LobbyListItemComponent,
     LobbyInfoComponent,
     CreateModalComponent,
-    RulesSectionComponent,
     RuleComponent,
+    SelectorComponent,
   ],
   exports: [ShellComponent, HomeComponent],
   providers: [

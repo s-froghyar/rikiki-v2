@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  height: 5rem;
+  background-color: lightgray;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  position: relative;
+  text-align: center;
+  flex-grow: 1;
+  max-width: 50%;
+
+  fa-icon {
+    // position: absolute;
+    // top: -0.4rem;
+    // right: -0.4rem;
+    // color: blue;
+    vertical-align: super;
+    font-size: 11px;
+    cursor: pointer;
+  }
+}
+.val {
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,18 @@
+<div class="title">
+    <span>
+        {{ rule.displayName }}
+        <fa-icon [icon]="faInfo" *ngIf="rule.info"
+            [matTooltip]="rule.info" matTooltipPosition="above"></fa-icon>
+    </span>
+</div>
+<div class="val" [ngSwitch]="ruleType">
+    <mat-slide-toggle *ngSwitchCase="'toggle'"
+        color="primary"
+        [checked]="rule.value"
+        (change)="emitChange($event.checked)">
+    </mat-slide-toggle>
+    <rikiki-selector *ngSwitchCase="'num'"
+        [items]="numItems"
+        (selectionChanged)="emitChange($event)">
+    </rikiki-selector>
+</div>

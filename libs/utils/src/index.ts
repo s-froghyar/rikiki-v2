@@ -8,5 +8,8 @@ export * from './lib/interfaces/user';
 export * from './lib/mocks/lobbies.mock';
 export * from './lib/mocks/players.mock';
 
+// default settings
+export * from './lib/defaults/rules';
+
 // services
 export * from './lib/services/lobby.service';

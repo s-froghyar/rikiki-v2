@@ -1,0 +1,35 @@
+:host {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+span {
+    position: absolute;
+    bottom: 0.25rem;
+    left: 0.5rem;
+    font-size: 50px;
+}
+ul {
+    height: 100%;
+    width: fit-content;
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    li {
+        text-align: center;
+        scroll-snap-align: start;
+        cursor: pointer;
+        &.selected {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    }
+}
